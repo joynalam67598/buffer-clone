@@ -7,11 +7,16 @@ class RegistrationController < ApplicationController
     # @user = User.new(params[:user]) #not sequre
     @user = User.new(user_parems)
     if @user.save
+      session[:user_id] = @user.id
       redirect_to root_path, notice: "You logged in successfully!"
     else
       render :new #new.html.erb
       flash.now[:alert] = "Something is wrong!"
     end
+  end
+
+  def destroy
+    
   end
 
   private
