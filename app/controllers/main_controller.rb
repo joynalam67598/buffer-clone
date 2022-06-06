@@ -1,7 +1,7 @@
 class MainController < ApplicationController
   def index
-    # flash[:notice] = "logedin successfully"
-    flash.now[:notice] = "logedin successfully"
-    flash.now[:alert] = "Invalid"
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+    end
   end
 end
